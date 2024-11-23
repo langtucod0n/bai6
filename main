@@ -1,0 +1,43 @@
+#include <iostream>
+#include "struct.h"
+using namespace std;
+
+int main() {
+	srand(4003);
+	int n = 5 + rand() % 20;
+	duongTron** listDT = new duongTron * [n];
+	if (listDT == NULL) {
+		return 0;
+	}
+	float xV, yV, rV;
+	for (int i = 0; i < n; i++) {
+		xV = (rand() % 1000) * 1.0f / 50;
+		yV = (rand() % 1000) * 1.0f / 50;
+		rV = (rand() % 1000 + 1) * 1.0f / 50;
+		listDT[i] = taoDuongTron(xV, yV, rV);
+	}
+	cout << "duong tron co chu vi lon nhat la: ";
+	duongTron* pDTPMax = chuViMax(listDT, n);
+	printDuongTron(cout, pDTPMax);
+	cout << endl << endl;
+	cout << "tong dien tich: " << tongDienTich(listDT, n);
+	cout << endl << endl;
+	cout << "cac duong tron co dien tich lon hon TB: ";
+	int dem = xuatCacDuongTronDTLonHonTrungBinh(listDT, n);
+	cout << "S trung binh: " << tongDienTich(listDT, n) / n << endl;
+	for (int i = 0; i < n; i++) {
+		if (listDT[i]->banKinh * listDT[i]->banKinh * PI > tongDienTich(listDT, n) / n) {
+			printDuongTron(cout, listDT[i]);
+			cout << " voi S=" << listDT[i]->banKinh * listDT[i]->banKinh * PI << endl;
+		}
+	}
+	cout << "so luong: " << dem;
+	cout << endl << endl;
+	cout << "ds duong tron chu vi giam dan: " << endl;
+	xuatCacDuongTronChuViGiam(listDT, n);
+	cout << endl << endl;
+
+	xoaDsDuongTron(listDT, n);
+	system("pause");
+	return 0;
+}
