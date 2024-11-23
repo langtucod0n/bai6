@@ -1,0 +1,26 @@
+#ifndef STRUCT_H
+#define STRUCT_H
+#define PI 3.14159
+#include <iostream>
+using namespace std;
+struct diem {
+	float x, y;
+};
+
+struct duongTron {
+	diem* tam;
+	float banKinh;
+};
+
+duongTron* taoDuongTron(float x, float y, float r);
+void xoaDuongTron(duongTron* p);
+void printDuongTron(ostream& os, duongTron* p);
+duongTron* chuViMax(duongTron** l, int n);
+float tongDienTich(duongTron** l, int n);
+int xuatCacDuongTronDTLonHonTrungBinh(duongTron** l, int n);
+void xuatCacDuongTronChuViGiam(duongTron** l, int n);
+void xoaDsDuongTron(duongTron** l, int n);
+
+
+
+#endif
